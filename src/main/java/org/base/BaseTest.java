@@ -15,7 +15,7 @@ public class BaseTest {
         Configuration.startMaximized = true;//full window
 //        Configuration.browserSize = "1920x1080";//we can tell in what size to open window
         Configuration.screenshots = true;//if test die we can find screenshots in one of our packages(build)
-        Configuration.headless = true;//test run in "silent mode"
+        Configuration.headless = false;//test run in "silent mode"
         Configuration.pageLoadStrategy = "normal";//speed od page loading
         Configuration.pageLoadTimeout= 20000;//
         Configuration.timeout = 10000;//time to start looking for element
@@ -24,7 +24,7 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true, description = "opening base url")
     public void setUp(){
-        Selenide.open("https://www.google.com");
+        Selenide.open("https://www.amazon.co.uk/");
     }
 
     @AfterMethod(alwaysRun = true, description = "web driver clean up")
