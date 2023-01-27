@@ -1,7 +1,9 @@
 package org.base;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.testng.annotations.*;
+
 public class BaseTest {
     //@BeforeSuite//hierarchy of annots
 //@BeforeClass
@@ -10,32 +12,37 @@ public class BaseTest {
 
 
     @BeforeClass(alwaysRun = true, description = "Creating configs for our tests")
-    public void configuration(){
+    public void configuration() {
         Configuration.holdBrowserOpen = true;//if test die browser is still open
         Configuration.startMaximized = true;//full window
 //        Configuration.browserSize = "1920x1080";//we can tell in what size to open window
         Configuration.screenshots = true;//if test die we can find screenshots in one of our packages(build)
         Configuration.headless = false;//test run in "silent mode"
         Configuration.pageLoadStrategy = "normal";//speed od page loading
-        Configuration.pageLoadTimeout= 20000;//
+        Configuration.pageLoadTimeout = 20000;//
         Configuration.timeout = 10000;//time to start looking for element
 //        Configuration.reportsFolder= "screenshots
     }
 
     @BeforeMethod(alwaysRun = true, description = "opening base url")
-    public void setUp(){
-        Selenide.open("https://www.amazon.co.uk/");
+    public void setUp() {
+        Selenide.open("https://ps.uci.edu/~franklin/doc/file_upload.html");
     }
+//    https://www.saucedemo.com/ - TEST WEB-SITE
+//    https://www.stats.govt.nz/large-datasets/csv-files-for-download/ - URL TO DOWNLOAD FILE
+//    https://ps.uci.edu/~franklin/doc/file_upload.html - URL TO UPLOAD FILE
+
 
     @AfterMethod(alwaysRun = true, description = "web driver clean up")
-    public void cleanWebDriver(){
+    public void cleanWebDriver() {
         Selenide.clearBrowserCookies();
         Selenide.refresh();
         Selenide.open("about blanc");
     }
+
     @AfterSuite(alwaysRun = true, description = "closing web driver")
-    public void tearDown(){
-    Selenide.closeWebDriver();
+    public void tearDown() {
+        Selenide.closeWebDriver();
     }
 
 
